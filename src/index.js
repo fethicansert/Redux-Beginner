@@ -1,9 +1,11 @@
-function sayHello(){
-    return () => 'HELLO HELL'
-}
+const input  = " JavaScriprt ";
+const output = `<div>${input.trim()}</div>`
+console.log(output);
 
-const fn = sayHello; //If I put parantezies I call to function just name it's means assigne to reference
 
-const greet = (hellFunction) => console.log(hellFunction());
-
-greet(sayHello);
+const trim = text => text.trim();
+const divWrap = input => `<div>${input}</div>`
+const toLowerCase = text => text.toLowerCase();
+const res = divWrap(trim(toLowerCase(input)));
+//Proplems wtih this function compostion is we read right to legt and to much parantezies
+console.log(res);
