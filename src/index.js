@@ -86,4 +86,29 @@ const x = (type,text) => {
 
 console.log(x('div', 'text'));
 
+const person = {
+    name:'Ahmet',
+    address: {
+        country:"KKTC", 
+        city:"Lefkosa"}, 
+    age:25
+}
+
+const newPerson = {...person,name:'Hasan'}; //...spread operator yaymak //overwrite name //! address still shallow copy !
+                                            //newPerson object it's deepcopy but address is shallowCopy 
+newPerson.address.city = 'Girne'; //address is shallow copy there
+newPerson.age = 45; //This not effect to orginal person object beacuse it's not hold a reference
+console.log(person);
+console.log(newPerson);
+
+const newPerson_1 = {...person, //spread the person object now I can overwrite
+                        name:"Jack",
+                        address: { //deepCopying creating new objcet
+                            ...person.address,
+                               city: 'Mexico'     
+                        }
+                    }
+console.log(newPerson_1);
+//Shallow Copy stores the references of objects to the original memory address. 
+//Deep copy stores copies of the object's value.
 
