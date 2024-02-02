@@ -98,8 +98,8 @@ const newPerson = {...person,name:'Hasan'}; //...spread operator yaymak //overwr
                                             //newPerson object it's deepcopy but address is shallowCopy 
 newPerson.address.city = 'Girne'; //address is shallow copy there
 newPerson.age = 45; //This not effect to orginal person object beacuse it's not hold a reference
-console.log(person);
-console.log(newPerson);
+// console.log(person);
+// console.log(newPerson);
 
 const newPerson_1 = {...person, //spread the person object now I can overwrite
                         name:"Jack",
@@ -108,7 +108,42 @@ const newPerson_1 = {...person, //spread the person object now I can overwrite
                                city: 'Mexico'     
                         }
                     }
-console.log(newPerson_1);
+// console.log(newPerson_1);
 //Shallow Copy stores the references of objects to the original memory address. 
 //Deep copy stores copies of the object's value.
+
+
+const numbers = [1, 2, 3, 5, 6];
+const addValue = 4;
+const index = numbers.indexOf(1);
+console.log(index);
+
+const added = [
+    ...numbers.slice(0, index + 1),
+    addValue,
+    ...numbers.slice(index + 1, numbers.length)
+];
+
+console.log(added);
+
+// const str = 'Hello';
+// console.log(str.slice(1,3));  //el  using slice with String and Array is different
+
+// const xc = [...str].slice(1,3); //[e,l];
+// console.log(xc);
+
+//Remove Item
+const removeItem  = 2;
+const removed = numbers.filter(n => n !== 2 );
+console.log(removed);
+
+//Update Item
+const updateItem = 3;
+const updated = numbers.map(n => n === updateItem ? 100 : n);
+console.log(updated);
+
+
+
+
+
 
