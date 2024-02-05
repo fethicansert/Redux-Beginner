@@ -1,19 +1,18 @@
-import { produce } from "immer";
+import store from "./store";
+import { bugAdded, bugRemoved, toogleResolved } from "./actionsCreators";
 
-//produce function takes two argument base state and recipe function which use draft (taslak) as a parameter
-//mutation only applies the drafy __copy__ of the given base state
 
-let book = { title: "Harry Potter" };
+const unsubscribe = store.subscribe(() => { //I should clear unsubscribe if unmounted this component We don't want to create memory leak
+    console.log("Some thing Change", store.getState());
+})
 
-function publish(book){
-    const draft = produce(book, (draftBook) => {
-        draftBook.isPublished = true;
-    });
+store.dispatch(bugAdded('BUG_1'));
+// console.log(store.getState());
+// store.dispatch(bugRemoved(1));
 
-    return draft;
-}
+// store.dispatch(bugAdded('BUG_2'));
 
-const x = publish(book);
+store.dispatch(toogleResolved(1));
+// console.log(store.getState());
 
-console.log(book);
-console.log(x);
+
